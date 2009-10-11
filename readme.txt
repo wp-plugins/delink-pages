@@ -10,14 +10,14 @@ This plugin will allow you to specify certain pages to not be linked when wp_lis
 
 == Description ==
 
-This plugin will allow you to specify certain pages to not be linked when wp_list_pages() is used in a theme. You might want to do this if you want a header for a series of subpages, but don't specifically want that header to be a real page itself.
+This plugin will allow you to specify certain pages to not be linked when `wp_list_pages()` is used in a theme. You might want to do this if you want a header for a series of subpages, but don't specifically want that header to be a real page itself.
 
 == Installation ==
 
 1. Download plugin archive and expand it
 2. Put scripty-delinkpage.php in your wp-content/plugins/ directory
 3. Activate plugin through the 'Plugins' menu in WordPress
-4. To indicate that a page should not be linked when wp_list_pages() is used, edit the page that you do not want linked and create a custom field with a key of "delink" and value of "true".
+4. To indicate that a page should not be linked when `wp_list_pages()` is used, edit the page that you do not want linked and create a custom field with a key of "delink" and value of "true".
 
 == Frequently Asked Questions ==
 
