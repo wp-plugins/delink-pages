@@ -2,9 +2,9 @@
 /*
 Plugin Name: Delink Pages
 Plugin URI: http://www.scriptygoddess.com/archives/2009/10/07/delink-pages-plugin/
-Description: This plugin will let you specify certain pages that will not be linked when wp_list_pages is called. To use, add a custom field with a key of 'delink' and value 'true' in order for the page to not have a link when the page should not have be linked when wp_list_pages is used.
+Description: This plugin will let you specify certain pages that will not be linked when wp_list_pages is called. To use, add a custom field with a key of 'delink' and value 'true' or 'href' in order for the page to not have a link when the page should not have be linked when wp_list_pages is used.
 Author: Jennifer Stuart
-Version: 1.0
+Version: 1.1
 Author URI: http://scriptygoddess.com
 */
 
@@ -30,10 +30,13 @@ function scripty_de_link($output) {
 		$allpageids = get_posts(array('post_type' => 'page', 'numberposts' => -1));
 		foreach ($allpageids as $eachpage) {
 			//get custom field value for delink
-			$delinkthis = get_post_meta($eachpage->ID, "delink");
-			if ($delinkthis) { 
+			$delinkthis = get_post_meta($eachpage->ID,"delink",true);
+			if ($delinkthis == "true") { 
 				$newurl = preg_quote(get_permalink($eachpage->ID));
 				$output = preg_replace('@\<a href="'.$newurl.'" (.*?)>(.*?)\<\/a>@i', '$2', $output);
+			} else if ($delinkthis == "href") {
+				$newurl = preg_quote(get_permalink($eachpage->ID));
+				$output = preg_replace('@\<a href="'.$newurl.'" (.*?)>(.*?)\<\/a>@i', '<a href="#" $1>$2</a>', $output);
 			}
 		}
         return $output;
