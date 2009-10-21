@@ -3,8 +3,8 @@ Contributors: scripty
 Donate link: http://www.scriptygoddess.com/tip-jar/
 Tags: pages, unlink, wp_list_pages
 Requires at least: 2.8
-Tested up to: 2.8.4
-Stable tag: 1.1
+Tested up to: 2.8.5
+Stable tag: 1.1.1
 
 This plugin will allow you to specify certain pages to not be linked when wp_list_pages() is used in a theme.
 
@@ -28,6 +28,9 @@ Please see plugin homepage.
 1. Custom field needed on page that should not have a link
 
 == Changelog ==
+
+= 1.1.1 =
+Bug fix - now checking for random values both before and after href in the a tag with preg_replace
 
 = 1.1 =
 * added check for delink to have a value of "href" to leave page linked but only to #
