@@ -33,10 +33,10 @@ function scripty_de_link($output) {
 			$delinkthis = get_post_meta($eachpage->ID,"delink",true);
 			if ($delinkthis == "true") { 
 				$newurl = preg_quote(get_permalink($eachpage->ID));
-				$output = preg_replace('@\<a href="'.$newurl.'" (.*?)>(.*?)\<\/a>@i', '$2', $output);
+				$output = preg_replace('@\<a(.*?)href="'.$newurl.'"(.*?)>(.*?)\<\/a>@i', '$3', $output);
 			} else if ($delinkthis == "href") {
 				$newurl = preg_quote(get_permalink($eachpage->ID));
-				$output = preg_replace('@\<a href="'.$newurl.'" (.*?)>(.*?)\<\/a>@i', '<a href="#" $1>$2</a>', $output);
+				$output = preg_replace('@\<a(.*?)href="'.$newurl.'"(.*?)>(.*?)\<\/a>@i', '<a href="#" $2>$3</a>', $output);
 			}
 		}
         return $output;
